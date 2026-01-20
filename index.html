@@ -1,12 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>My GitHub Page</title>
+    <meta charset="UTF-8">
+    <title>타자연습 테스트</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 80px;
+        }
+        #target {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        #input {
+            font-size: 20px;
+            padding: 10px;
+            width: 300px;
+        }
+        #status {
+            margin-top: 15px;
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
-	<h1>Welcom to My Website</h1>
-	<p>This is a simple website hosted on GitHub Pages.</p>
+
+    <div id="target">hello world</div>
+
+    <input id="input" type="text" placeholder="여기에 입력" autofocus />
+
+    <div id="status"></div>
+
+    <script>
+        const targetText = "hello world";
+        const input = document.getElementById("input");
+        const status = document.getElementById("status");
+
+        input.addEventListener("input", function () {
+            const value = input.value;
+
+            if (value === targetText) {
+                status.textContent = "완료! 🎉";
+                status.style.color = "green";
+            } else if (targetText.startsWith(value)) {
+                status.textContent = "입력 중...";
+                status.style.color = "black";
+            } else {
+                status.textContent = "오타 ❌";
+                status.style.color = "red";
+            }
+        });
+    </script>
+
 </body>
 </html>
