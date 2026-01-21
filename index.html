@@ -1,57 +1,118 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>타자연습 테스트</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 80px;
-        }
-        #target {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-        #input {
-            font-size: 20px;
-            padding: 10px;
-            width: 300px;
-        }
-        #status {
-            margin-top: 15px;
-            font-size: 18px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>오늘의 감성 문장 타자 연습</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: "Pretendard", "Apple SD Gothic Neo", sans-serif;
+  background: linear-gradient(180deg, #0f2027, #203a43, #2c5364);
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 90%;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.title {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 12px;
+  opacity: 0.9;
+}
+
+.sentence {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+textarea {
+  width: 100%;
+  height: 90px;
+  border-radius: 12px;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  resize: none;
+  outline: none;
+}
+
+.result {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.footer {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.6;
+}
+</style>
 </head>
+
 <body>
 
-    <div id="target">hello world</div>
+<div class="container">
+  <div class="title">오늘의 감성 문장</div>
+  <div class="sentence" id="sentence"></div>
 
-    <input id="input" type="text" placeholder="여기에 입력" autofocus />
+  <textarea id="input" placeholder="천천히 따라 쳐보세요..."></textarea>
 
-    <div id="status"></div>
+  <div class="result" id="result"></div>
+  <div class="footer">이 문장은 오늘 하루 동안만 함께합니다.</div>
+</div>
 
-    <script>
-        const targetText = "hello world";
-        const input = document.getElementById("input");
-        const status = document.getElementById("status");
+<script>
+const sentences = [
+  "오늘도 아무 말 없이 버텨줘서 고마워.",
+  "조금 느려도 괜찮아, 지금도 충분해.",
+  "지친 하루 끝에 너는 잘 해냈어.",
+  "아무도 몰라도, 나는 나를 안다.",
+  "괜찮지 않아도 괜찮은 날이 있다.",
+  "오늘 하루도 여기까지 와줘서 고마워.",
+  "지금 이 순간에도 너는 성장하고 있어.",
+  "잠시 멈춰도 괜찮아, 멈춘다고 뒤처지지 않아.",
+  "오늘의 무게는 오늘까지만 내려놓자.",
+  "조용한 밤이 너를 안아줄 거야."
+];
 
-        input.addEventListener("input", function () {
-            const value = input.value;
+// 날짜 기반 오늘의 문장
+const today = new Date().getDate();
+const sentence = sentences[today % sentences.length];
 
-            if (value === targetText) {
-                status.textContent = "완료! 🎉";
-                status.style.color = "green";
-            } else if (targetText.startsWith(value)) {
-                status.textContent = "입력 중...";
-                status.style.color = "black";
-            } else {
-                status.textContent = "오타 ❌";
-                status.style.color = "red";
-            }
-        });
-    </script>
+const sentenceEl = document.getElementById("sentence");
+const inputEl = document.getElementById("input");
+const resultEl = document.getElementById("result");
+
+sentenceEl.textContent = sentence;
+
+inputEl.addEventListener("input", () => {
+  const typed = inputEl.value;
+  if (typed === sentence) {
+    resultEl.textContent = "잘했어요. 이제 잠깐 쉬어도 괜찮아요 🌙";
+  } else {
+    resultEl.textContent = "";
+  }
+});
+</script>
 
 </body>
 </html>
