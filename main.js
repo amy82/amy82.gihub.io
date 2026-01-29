@@ -5,6 +5,7 @@ import {
   collection,
   query,
   doc,
+  updateDoc,
   where,
   getDocs,
   increment
@@ -64,6 +65,7 @@ btn.addEventListener("click", async () => {
     console.error("❌ 저장 실패", err);
   }
 });
+
 
 
 
