@@ -10,16 +10,14 @@ import {
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+  const db = getFirestore(app);
 
-// 📌 tact_logs 최근 10개 불러오기
-const q = query(
-  collection(db, "tact_logs"),
-  orderBy("createdAt", "desc"),
-  limit(10)
-);
+  const q = query(
+    collection(db, "users")
+  );
 
 const snapshot = await getDocs(collection(db, "tact_logs"));
+
 const tbody = document.getElementById("tactBody");
 //console.log("snapshot size:", snapshot.size);
 snapshot.forEach(doc => {
@@ -35,6 +33,7 @@ snapshot.forEach(doc => {
   `;
   tbody.appendChild(tr);
 });
+
 
 
 
