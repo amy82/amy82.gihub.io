@@ -5,7 +5,8 @@ import {
   collection,
   query,
   where,
-  getDocs
+  getDocs,
+  increment
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
   // Your web app's Firebase configuration
@@ -45,6 +46,7 @@ snapshot.forEach(doc => {
   `;
   tbody.appendChild(tr);
 });
+
 
 
 
