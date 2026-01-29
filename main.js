@@ -8,6 +8,18 @@ import {
   getDocs
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBdKhcwMd0A9OkXfasAc4hS10O1Ah8AwtU",
+    authDomain: "github-b40c6.firebaseapp.com",
+    projectId: "github-b40c6",
+    storageBucket: "github-b40c6.firebasestorage.app",
+    messagingSenderId: "416411713955",
+    appId: "1:416411713955:web:6646eb2f37590eeebc5a16",
+    measurementId: "G-BF7NT64VHF"
+  };
+
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
@@ -33,6 +45,7 @@ snapshot.forEach(doc => {
   `;
   tbody.appendChild(tr);
 });
+
 
 
 
