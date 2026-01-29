@@ -4,6 +4,7 @@ import {
   getFirestore,
   collection,
   query,
+  doc,
   where,
   getDocs,
   increment
@@ -63,6 +64,7 @@ btn.addEventListener("click", async () => {
     console.error("❌ 저장 실패", err);
   }
 });
+
 
 
 
