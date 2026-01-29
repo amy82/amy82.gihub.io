@@ -8,6 +8,7 @@ import {
   updateDoc,
   where,
   getDocs,
+  setDoc,
   increment
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
@@ -68,6 +69,7 @@ btn.addEventListener("click", async () => {
     console.error("❌ 저장 실패", err);
   }
 });
+
 
 
 
