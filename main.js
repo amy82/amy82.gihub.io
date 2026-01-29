@@ -3,10 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
 import {
   getFirestore,
   collection,
-  getDocs,
-  query,
-  orderBy,
-  limit
+  getDocs
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
   // Initialize Firebase
@@ -36,6 +33,7 @@ snapshot.forEach(doc => {
   `;
   tbody.appendChild(tr);
 });
+
 
 
 
