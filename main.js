@@ -20,7 +20,7 @@ const q = query(
   limit(10)
 );
 
-const snapshot = await getDocs(q);
+const snapshot = await getDocs(collection(db, "tact_logs"));
 const tbody = document.getElementById("tactBody");
 //console.log("snapshot size:", snapshot.size);
 snapshot.forEach(doc => {
@@ -36,6 +36,7 @@ snapshot.forEach(doc => {
   `;
   tbody.appendChild(tr);
 });
+
 
 
 
