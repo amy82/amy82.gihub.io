@@ -29,10 +29,10 @@ const q = query(
 
 const snapshot = await getDocs(q);
 const tbody = document.getElementById("tactBody");
-
+console.log("snapshot size:", snapshot.size);
 snapshot.forEach(doc => {
   const d = doc.data();
-
+  console.log(doc.id, doc.data());
   const tr = document.createElement("tr");
   tr.innerHTML = `
     <td>${d.productId}</td>
@@ -43,3 +43,4 @@ snapshot.forEach(doc => {
   `;
   tbody.appendChild(tr);
 });
+
