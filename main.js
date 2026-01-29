@@ -56,15 +56,19 @@ btn.addEventListener("click", async () => {
   try {
     const ref = doc(db, "tact_logs", "productA"); // 컬렉션 / 문서ID
 
-    await updateDoc(ref, {
+    // await updateDoc(ref, {
+    //   grip: increment(1)
+    // });
+  await setDoc(ref, {
       grip: increment(1)
-    });
-
+    }, { merge: true });
+    
     console.log("✅ grip +1 저장 완료");
   } catch (err) {
     console.error("❌ 저장 실패", err);
   }
 });
+
 
 
 
