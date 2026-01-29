@@ -50,6 +50,7 @@ snapshot.forEach(doc => {
 const btn = document.getElementById("btnGripPlus");
 
 btn.addEventListener("click", async () => {
+  console.log("btn click");
   try {
     const ref = doc(db, "tactLogs", "productA"); // 컬렉션 / 문서ID
 
@@ -62,6 +63,7 @@ btn.addEventListener("click", async () => {
     console.error("❌ 저장 실패", err);
   }
 });
+
 
 
 
