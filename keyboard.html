@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Edu Practice</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f6f8;
+        }
+
+        header {
+            background: #2563eb;
+            color: white;
+            padding: 16px;
+            font-size: 20px;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 좌측 단계 목록 */
+        .sidebar {
+            width: 220px;
+            background: #ffffff;
+            border-right: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        .level {
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .level:hover {
+            background: #e0e7ff;
+        }
+
+        .level.active {
+            background: #2563eb;
+            color: white;
+        }
+
+        /* 메인 콘텐츠 */
+        .main {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .question {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            font-size: 20px;
+            padding: 10px;
+        }
+
+        .result {
+            margin-top: 15px;
+            font-size: 18px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* 광고 영역 */
+        .ad {
+            margin-top: 30px;
+            padding: 20px;
+            background: #eee;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    ⌨️ Edu Practice (TypingClub 구조)
+</header>
+
+<div class="container">
+
+    <!-- 단계 목록 -->
+    <div class="sidebar" id="levelList"></div>
+
+    <!-- 메인 -->
+    <div class="main">
+        <div class="question" id="questionText"></div>
+        <input type="text" id="userInput" placeholder="여기에 입력하세요">
+        <div class="result hidden" id="resultText"></div>
+
+        <!-- 결과 후 광고 -->
+        <div class="ad hidden" id="adArea">
+            광고 영역 (Google AdSense 위치)
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // ====== 데이터 ======
+    const levels = [
+        "hello",
+        "javascript",
+        "education",
+        "practice makes perfect",
+        "typing club style"
+    ];
+
+    let currentLevel = 0;
+
+    const levelList = document.getElementById("levelList");
+    const questionText = document.getElementById("questionText");
+    const userInput = document.getElementById("userInput");
+    const resultText = document.getElementById("resultText");
+    const adArea = document.getElementById("adArea");
+
+    // ====== 단계 목록 생성 ======
+    function renderLevels() {
+        levelList.innerHTML = "";
+        levels.forEach((_, index) => {
+            const div = document.createElement("div");
+            div.className = "level" + (index === currentLevel ? " active" : "");
+            div.innerText = "Level " + (index + 1);
+            div.onclick = () => loadLevel(index);
+            levelList.appendChild(div);
+        });
+    }
+
+    // ====== 단계 로드 ======
+    function loadLevel(index) {
+        currentLevel = index;
+        questionText.innerText = levels[index];
+        userInput.value = "";
+        resultText.classList.add("hidden");
+        adArea.classList.add("hidden");
+        renderLevels();
+        userInput.focus();
+    }
+
+    // ====== 입력 체크 ======
+    userInput.addEventListener("input", () => {
+        if (userInput.value === levels[currentLevel]) {
+            resultText.innerText = "✅ 성공! 다음 단계로 가세요.";
+            resultText.classList.remove("hidden");
+            adArea.classList.remove("hidden");
+        }
+    });
+
+    // 초기화
+    renderLevels();
+    loadLevel(0);
+</script>
+
+</body>
+</html>
